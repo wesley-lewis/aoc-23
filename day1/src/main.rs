@@ -3,17 +3,13 @@ use std::{fs::File, io::{BufReader, BufRead}};
 fn main() -> std::io::Result<()>{
     let f = File::open("input.txt").expect("failed to load input");
     let buf = BufReader::new(f);
-    let mut counter: u32 = 0;
+
     for line in buf.lines() {
-        if counter == 7 {
-            break;
-        }
         let line = line?;
         let value = find_calibration_values(&line);
-        println!("Ans: {value}");
-        counter += 1;
+        println!("{value}");
     }
-
+    
     Ok(())
 }
 
